@@ -4,10 +4,10 @@ import Link from "next/link";
 import Layout from "@components/Layout";
 import styles from "@styles/works.module.css";
 import { FiArrowLeft } from "react-icons/fi";
+import Url from 'url-parse'
 
 export default function Post({ page, blocks }) {
   if(!page)return(<div/>)
-  console.log(page.page_title[0].plain_text);
   const date = new Date(page.properties.Date.date.start).toLocaleString(
     "en-US",
     {
@@ -15,11 +15,16 @@ export default function Post({ page, blocks }) {
       year: "numeric",
     }
   );
+  if (!!page.properties.Documentation.url){
+    const website = new Url(page.properties.Documentation.url);
+    page.properties.Documentation.hostname = website.host;
+  }
   return (
     <Layout page={page}>
       {page.cover &&
-        <img className={styles.cover} src={page.cover.type === "external" ? page.cover.external.url : 
-page.cover.file.url} alt="Picture of the author" />
+
+        <img className={styles.cover} src={page.cover.type === "external" ? page.cover.external.url :
+        page.cover.file.url} alt=""/>
       }
       <Link href={`/`} >
         <div className={styles.back}>
@@ -31,13 +36,18 @@ page.cover.file.url} alt="Picture of the author" />
       {page.page_title &&
         <h2 className={styles.title}>
           {page.icon && page.icon.emoji} <RenderText text={page.page_title} />
+          {page.properties.Category.select &&
+        <span className={styles.category}>
+          {page.properties.Category.select.name}
+        </span>
+      }
         </h2>
         }
 
         {page.properties.Documentation.url &&
           <div className={styles.documentation}>
             <Link href={`${page.properties.Documentation.url}`}>
-              {page.properties.Documentation.url}
+            {page.properties.Documentation.hostname}
             </Link>
           </div>
         }
@@ -58,11 +68,7 @@ page.cover.file.url} alt="Picture of the author" />
           ))}
         </div>
         }
-        {/* {page.properties.Category.select &&
-        <div className={styles.category}>
-          {page.properties.Category.select.name}
-        </div>
-      } */}
+        
       </div>
 
           {blocks.map((block) => (<RenderBlock block={block} key={block.id}/>))}

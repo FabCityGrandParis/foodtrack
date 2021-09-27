@@ -115,10 +115,11 @@ export const RenderBlock = ({block}) => {
                         <Link key={item.id}  href={`/${value.title}/${item.id}`}>
                         <li key={item.id} className={styles.item}>
                             <img className={styles.itemImage} src={src} />
-                                     <h3 className={styles.itemTitle}>
-                                        <RenderText text={item.properties.Name.title} />
-                                    </h3>
-                            <p className={styles.itemDescription}>{date}</p>
+                                <h3 className={styles.itemTitle}>
+                                    <RenderText text={item.properties.Name.title} />
+                                    <span className={styles.itemStatus} status={item.properties.Status.select.name}>{item.properties.Status.select.name}</span>
+                                </h3>
+                                <p className={styles.itemDescription}>{date}</p>
                         </li>
                     </Link>
                     );
