@@ -99,11 +99,12 @@ export const RenderBlock = ({block}) => {
             );
         case "child_database":
             const items = value.blocks;
+            if(!items) return("")
             return (
             <ul className={styles.items}>
                 {items.map((item) => {
                     const date = new Date(item.properties.Date.date.start).toLocaleString(
-                        "fr-FR",
+                        "en-US",
                         {
                             month: "short",
                             year: "numeric",
@@ -111,7 +112,7 @@ export const RenderBlock = ({block}) => {
                     );
                     const src = item.cover.type === "external" ? item.cover.external.url : item.cover.file.url;
                     return (
-                    <Link href={`/${value.title}/${item.id}`}>
+                        <Link key={item.id}  href={`/${value.title}/${item.id}`}>
                         <li key={item.id} className={styles.item}>
                             <img className={styles.itemImage} src={src} />
                                      <h3 className={styles.itemTitle}>

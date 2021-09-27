@@ -7,4 +7,16 @@
 
 .title {
   margin: 1rem 0;
+  transition: ease-in-out 0.2s;
+  cursor: pointer;
+}
+
+.title:hover {
+  transform: translateY(-0.5rem);
+}
+
+@media screen and (max-width: 700px) {
+  .title {
+    margin-left: 3.5rem;
+  }
 }
