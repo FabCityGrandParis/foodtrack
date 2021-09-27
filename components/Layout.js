@@ -6,7 +6,6 @@ import { FaKeybase, FaGithub, FaLinkedin, FaEnvelope, FaToolbox } from "react-ic
 const {siteName, socials} = JSON.parse(process.env.NEXT_PUBLIC_SITE_INFOS);
 
 export default function Layout({ page, children }) {
-    console.log("test", socials, siteName);
     return (
         <main className={styles.container}>
             <Head>
