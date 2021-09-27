@@ -1,8 +1,10 @@
 .container {
-  padding: 0 20px;
+  padding: 0 20px 4rem 20px;
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.5;
+  position: relative;
+  min-height: 97vh;
 }
 
 .header {
@@ -32,8 +34,14 @@
   margin-left: 0.5rem;
 }
 
-@media screen and (max-width: 700px) {
-  .title, .socials {
-    margin-left: 3.5rem;
-  }
+.footer {
+  text-align: center;
+  opacity: 0.9;
+  margin: 1rem 0;
+  font-size: var(--fontSize-sm);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
+

@@ -44,6 +44,9 @@ export default function Layout({ page, children }) {
                     </div>
             </header>
             {children}
+            <footer className={styles.footer}>
+                built with <Link href={`https://notion.so`}>notion.so</Link> and <Link href={`https://nextjs.org/`}>next.js</Link> | <Link href={`https://github.com/essenlive/essenlive.xyz`}>github</Link>
+            </footer>
         </main>
     );
 }

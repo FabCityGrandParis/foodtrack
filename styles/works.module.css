@@ -8,11 +8,11 @@
 
 .back {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: 0.5rem;
+  left: -3rem;
   height: 3rem;
   width: 3rem;
-  background-color: var(--white);
+  border: solid var(--black) var(--borderWidth-lg);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -21,6 +21,14 @@
   cursor: pointer;
   transition: ease-in-out 0.2s;
   box-shadow: var(--boxShadow-xl);
+}
+
+@media screen and (max-width: calc(700px + 2 * 3.5rem)) {
+  .back {
+    top: auto;
+    bottom: 0.5rem;
+    left: 0.5rem;
+  }
 }
 
 .back:hover {
@@ -36,7 +44,8 @@
   gap: 0.5rem 0.5rem;
   grid-template-areas: "title title date" "documentation tags tags";
 }
-.category{
+
+.category {
   font-weight: 200;
   margin-left: 1rem;
   text-transform: lowercase;
