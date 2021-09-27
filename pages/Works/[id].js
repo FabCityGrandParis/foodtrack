@@ -90,11 +90,11 @@ export const getStaticProps = async (context) => {
   const { id } = context.params;
   const page = await getPage(id);
   const blocksWithChildren = await getContent(id); 
-
+  // const { siteName, socials } = JSON.parse(process.env.SITE_INFOS);
   return {
     props: {
       page,
-      blocks: blocksWithChildren,
+      blocks: blocksWithChildren
     },
     revalidate: 1,
   };

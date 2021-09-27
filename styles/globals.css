@@ -22,7 +22,7 @@ li:before {
   top: 0.7em;
   position: absolute;
   height: 1px;
-  width: 1rem;
+  width: 0.5rem;
   background-color: var(--black);
 }
 

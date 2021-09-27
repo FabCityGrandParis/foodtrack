@@ -16,11 +16,10 @@ export default function Home({ page, blocks }) {
 export const getStaticProps = async () => {
   const page = await getPage(homePageId);
   const blocksWithChildren = await getContent(homePageId);
-
   return {
     props: {
-      page : page,
-      blocks: blocksWithChildren,
+      page,
+      blocks: blocksWithChildren
     },
     revalidate: 1,
   };
