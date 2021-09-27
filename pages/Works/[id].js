@@ -32,9 +32,9 @@ page.cover.file.url} alt="Picture of the author" />
         </h2>
         }
 
-        {page.properties.Documentation &&
+        {page.properties.Documentation.url &&
           <div className={styles.documentation}>
-            <Link href={`http://${page.properties.Documentation.url}`}>
+            <Link href={`${page.properties.Documentation.url}`}>
               {page.properties.Documentation.url}
             </Link>
           </div>
