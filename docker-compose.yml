@@ -9,11 +9,10 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=proxy"
       - "traefik.http.routers.essenlive-secure.entrypoints=websecure"
-      - "traefik.http.routers.essenlive-secure.rule=Host(`essenlive.xyz`)"
+      - "traefik.http.routers.essenlive-secure.rule=Host(`perso.essenlive.xyz`)"
       - "traefik.http.services.essenlive-service.loadbalancer.server.port=3000"
     networks:
       - proxy
-      - default
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
