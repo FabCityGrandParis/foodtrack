@@ -13,11 +13,22 @@
   transition: ease-in-out 0.2s;
   cursor: pointer;
 }
-.item::before{
+
+.item::before {
   display: none;
 }
+
 .item:hover {
   transform: translateY(-0.5rem);
+}
+
+.itemTitle {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  line-height: 1.2rem;
 }
 
 .itemImage {
@@ -25,6 +36,28 @@
   aspect-ratio: 2/1;
   object-fit: cover;
   border-radius: 0.5rem;
+}
+
+.itemStatus {
+  background-color: var(--lightBlue-200);
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.5rem;
+  border-radius: 500rem;
+  font-weight: 400;
+  font-size: var(--fontSize-sm);
+  text-transform: lowercase;
+}
+
+.itemStatus[status=Finished] {
+  background-color: var(--yellow-200);
+}
+
+.itemStatus[status="In progress"] {
+  background-color: var(--red-200);
+}
+
+.itemStatus[status="Idea"] {
+  background-color: var(--lightBlue-200);
 }
 
 .image {
@@ -38,9 +71,11 @@
   padding: 2px 4px;
   border-radius: 2px;
 }
-.image{
+
+.image {
   margin: 1rem 0;
 }
+
 .bold {
   font-weight: bold;
 }
