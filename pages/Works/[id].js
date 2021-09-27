@@ -6,6 +6,8 @@ import styles from "@styles/works.module.css";
 import { FiArrowLeft } from "react-icons/fi";
 
 export default function Post({ page, blocks }) {
+  if(!page)return(<div/>)
+  console.log(page.page_title[0].plain_text);
   const date = new Date(page.properties.Date.date.start).toLocaleString(
     "en-US",
     {
