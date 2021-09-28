@@ -77,8 +77,8 @@ export default function Post({ page, blocks }) {
 }
 
 export const getStaticPaths = async () => {
-  const databases = JSON.parse(process.env.DATABASES);
-  const database = await getDatabase(databases["Works"].id, databases["Works"].filter, databases["Works"].sort);
+  let database = JSON.parse(process.env.DATABASES).filter((database) => (database.name === "Works"))[0];
+  database = await getDatabase(database.id, database.filter, database.sort);
 
   return {
     paths: database.map((page) => ({ params: { id: page.id } })),
@@ -90,7 +90,6 @@ export const getStaticProps = async (context) => {
   const { id } = context.params;
   const page = await getPage(id);
   const blocksWithChildren = await getContent(id); 
-  // const { siteName, socials } = JSON.parse(process.env.SITE_INFOS);
   return {
     props: {
       page,

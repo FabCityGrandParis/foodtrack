@@ -19,6 +19,7 @@
 .title, .socials svg, .socials span {
   transition: ease-in-out 0.2s;
   cursor: pointer;
+  margin: 0;
 }
 
 .title:hover, .socials span:hover svg {
@@ -44,4 +45,3 @@
   right: 0;
   bottom: 0;
 }
-

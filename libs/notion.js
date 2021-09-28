@@ -51,8 +51,10 @@ export const getContent = async (blockId) => {
           (x) => x.id === block.id
         )?.children;
       }
-      if (block.type === "child_database" && databases[block[block.type].title]){
-        block[block.type].blocks = await getDatabase(databases[block[block.type].title].id, databases[block[block.type].title].filter, databases[block[block.type].title].sort);
+      if (block.type === "child_database") {
+        const database = databases.filter((database) => (database.name === block[block.type].title))[0]
+        if (!database) return ({})
+        block[block.type].blocks = await getDatabase(database.id, database.filter, database.sort);
       }
       return block;
     })
