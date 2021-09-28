@@ -2,10 +2,9 @@ import { getContent, getPage } from "@libs/notion";
 import Layout from "@components/Layout";
 import { RenderBlock } from "@components/RenderBlock";
 
-const homePageId = process.env.HOMEPAGE_ID;
 
 export default function Home({ page, blocks }) {
-
+  
   return (
     <Layout page={page}>
       {blocks.map((block) => (<RenderBlock block={block} key={block.id} />))}
@@ -14,12 +13,13 @@ export default function Home({ page, blocks }) {
 }
 
 export const getStaticProps = async () => {
-  const page = await getPage(homePageId);
-  const blocksWithChildren = await getContent(homePageId);
+  const homePage = JSON.parse(process.env.PAGES).filter((pages)=>(pages.route === ""))[0];
+  const page = await getPage(homePage.id);
+  const pageContent = await getContent(homePage.id);
   return {
     props: {
       page,
-      blocks: blocksWithChildren
+      blocks: pageContent
     },
     revalidate: 1,
   };
