@@ -1,7 +1,6 @@
 import { Client } from "@notionhq/client";
 
 const notion = new Client({auth: process.env.NOTION_TOKEN,});
-const databaseMap = JSON.parse(process.env.DATABASE_MAP);
 const databases = JSON.parse(process.env.DATABASES);
 
 
@@ -52,8 +51,19 @@ export const getContent = async (blockId) => {
           (x) => x.id === block.id
         )?.children;
       }
-      if (block.type === "child_database" && databases[block[block.type].title]){
-        block[block.type].blocks = await getDatabase(databases[block[block.type].title].id, databases[block[block.type].title].filter, databases[block[block.type].title].sort);
+      if (block.type === "child_database"){
+        const database = databases.filter((database) => (database.name === block[block.type].title))[0]
+        if (!database) return ({
+          object: 'block',
+          id: 'eea9261a-6033-4d71-bbb9-601c3a3a2fed',
+          created_time: '2021-03-09T11:48:00.000Z',
+          last_edited_time: '2021-03-09T11:48:00.000Z',
+          has_children: false,
+          archived: false,
+          type: 'unsupported',
+          unsupported: {}
+        })
+        block[block.type].blocks = await getDatabase(database.id, database.filter, database.sort);
       }
       return block;
     })

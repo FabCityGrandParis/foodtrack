@@ -110,11 +110,13 @@ export const RenderBlock = ({block}) => {
                             year: "numeric",
                         }
                     );
-                    const src = item.cover.type === "external" ? item.cover.external.url : item.cover.file.url;
+                    if (item.cover){
+                        const src = item.cover.type === "external" ? item.cover.external.url : item.cover.file.url;
+                    }
                     return (
                         <Link key={item.id}  href={`/${value.title}/${item.id}`}>
                         <li key={item.id} className={styles.item}>
-                            <img className={styles.itemImage} src={src} />
+                            {src && <img className={styles.itemImage} src={src} />}
                                 <h3 className={styles.itemTitle}>
                                     <RenderText text={item.properties.Name.title} />
                                     <span className={styles.itemStatus} status={item.properties.Status.select.name}>{item.properties.Status.select.name}</span>
