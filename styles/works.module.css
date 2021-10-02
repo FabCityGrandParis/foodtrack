@@ -12,7 +12,7 @@
   left: -3rem;
   height: 3rem;
   width: 3rem;
-  border: solid var(--black) var(--borderWidth-lg);
+  border: solid var(--font-color) var(--borderWidth-lg);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -21,6 +21,7 @@
   cursor: pointer;
   transition: ease-in-out 0.2s;
   box-shadow: var(--boxShadow-xl);
+  z-index: 100;
 }
 
 @media screen and (max-width: calc(700px + 2 * 3.5rem)) {
@@ -81,6 +82,7 @@
   border-radius: 500rem;
   font-size: var(--fontSize-sm);
   text-transform: lowercase;
+  color: var(--black);
 }
 
 .documentation {
@@ -97,6 +99,7 @@
   align-items: center;
   flex-wrap: wrap;
   align-items: flex-start;
+  color: var(--black);
 }
 
 .tags span {

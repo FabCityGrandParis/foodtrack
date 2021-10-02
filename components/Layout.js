@@ -1,5 +1,6 @@
 import styles from "@styles/layout.module.css"; import Head from "next/head";
 import Link from 'next/link'
+import ThemeSwitch from '@components/ThemeSwitch'
 import { FaKeybase, FaGithub, FaLinkedin, FaEnvelope, FaToolbox } from "react-icons/fa";
 
 
@@ -79,6 +80,7 @@ export default function Layout({ page, children }) {
                         <span><FaToolbox /></span>
                         </Link>}
                     </div>
+                    <ThemeSwitch/>
             </header>
             {children}
             <footer className={styles.footer}>

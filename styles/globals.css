@@ -5,9 +5,9 @@ html, body {
   font-family: var(--font-body);
   box-sizing: border-box;
   font-weight: 400;
-  color: var(--black);
+  color: var(--font-color);
   font-size: var(--fontSize-base);
-  background: var(--orange-50);
+  background: var(--bg-color);
 }
 
 li {
@@ -23,7 +23,7 @@ li:before {
   position: absolute;
   height: 1px;
   width: 0.5rem;
-  background-color: var(--black);
+  background-color: var(--font-color);
 }
 
 a {
@@ -42,7 +42,7 @@ a::after {
   bottom: 0;
   height: 0.2em;
   width: 100%;
-  background-color: var(--black);
+  background-color: var(--font-color);
   transition: ease-in-out 0.2s;
 }
 
