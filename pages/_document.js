@@ -10,7 +10,7 @@ class MyDocument extends Document {
         const umami = !process.env.NEXT_PUBLIC_UMAMI ? process.env.NEXT_PUBLIC_UMAMI : JSON.parse(process.env.NEXT_PUBLIC_UMAMI);
         return (
             <Html>
-                <Head />
+                <Head/>
                 <body>
                     <Main />
                     <NextScript />
