@@ -46,6 +46,7 @@
   font-weight: 400;
   font-size: var(--fontSize-sm);
   text-transform: lowercase;
+  color: var(--black);
 }
 
 .itemStatus[status=Finished] {

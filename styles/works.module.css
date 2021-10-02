@@ -99,7 +99,6 @@
   align-items: center;
   flex-wrap: wrap;
   align-items: flex-start;
-  color: var(--black);
 }
 
 .tags span {
@@ -110,6 +109,7 @@
   font-size: var(--fontSize-sm);
   text-transform: lowercase;
   align-items: flex-start;
+  color: var(--black);
 }
 
 .tags span:nth-child(1) {

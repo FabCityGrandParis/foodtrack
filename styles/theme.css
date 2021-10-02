@@ -1,13 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-:root {
+
+:root, [data-theme="light"] {
   --font-color: var(--black);
   --bg-color: var(--orange-50);
 }
 
 [data-theme="dark"] {
   --font-color: var(--white);
-  --bg-color: var(--gray-700);
+  --bg-color: var(--gray-800);
 }
+/* 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --font-color: var(--white);
+    --bg-color: var(--gray-800);
+  }
+  [data-theme="light"] {
+    --font-color: var(--black);
+    --bg-color: var(--orange-50);
+  }
+} */
 
 :root {
   /* Font families */

@@ -1,8 +1,11 @@
 import styles from "@styles/layout.module.css"; import Head from "next/head";
+import dynamic from "next/dynamic";
 import Link from 'next/link'
-import ThemeSwitch from '@components/ThemeSwitch'
 import { FaKeybase, FaGithub, FaLinkedin, FaEnvelope, FaToolbox } from "react-icons/fa";
 
+const ThemeSwitch = dynamic(() => import("@components/ThemeSwitch"), {
+    ssr: false,
+});
 
 const {siteName, socials} = JSON.parse(process.env.NEXT_PUBLIC_SITE_INFOS);
 
@@ -26,30 +29,34 @@ export default function Layout({ page, children }) {
                     <link rel='apple-touch-icon' sizes='152x152' href='/icons/apple-icon-152x152.png' />
                     <link rel='apple-touch-icon' sizes='180x180' href='/icons/apple-icon-180x180.png' />    
 
-                    <link rel='icon' type='image/png' sizes='32x32' href='/icons/favicon-32x32.png' />
-                    <link rel='icon' type='image/png' sizes='16x16' href='/icons/favicon-16x16.png' />
                     <link rel='manifest' href='/manifest.json' />
                     <link rel='mask-icon' href='/icons/safari-pinned-tab.svg' color='#355c7d' />
-                    <link rel='shortcut icon' href='/favicon.ico' />
+                    {/* <link rel='shortcut icon' href='/favicon.ico' /> */}
                     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,800,900' />
 
                     <meta name='twitter:card' content="Quentin Perchais' space" />
                     <meta name='twitter:url' content='https://essenlive.xyz' />
                     <meta name='twitter:title' content='essenlive.xyz' />
                     <meta name='twitter:description' content="Quentin Perchais' space" />
-                    <meta name='twitter:image' content='https://essenlive.xyz/icons/android-icon-192x192.png' />
+                    {/* <meta name='twitter:image' content='https://essenlive.xyz/icons/android-icon-192x192.png' /> */}
                     <meta name='twitter:creator' content='@essenlive' />
                     <meta property='og:type' content='website' />
                     <meta property='og:title' content='essenlive.xyz' />
                     <meta property='og:description' content="Quentin Perchais' space" />
                     <meta property='og:site_name' content='essenlive.xyz' />
                     <meta property='og:url' content='https://essenlive.xyz' />
-                    <meta property='og:image' content='https://essenlive.xyz/icons/apple-icon.png' />
+                    {/* <meta property='og:image' content='https://essenlive.xyz/icons/apple-icon.png' /> */}
 
 
                 <title>essenlive | {page.page_title[0].plain_text}</title>
-                {page.icon.emoji && 
-                    <link rel="icon" href={`data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${page.icon.emoji}</text></svg>`}></link>}
+                {page.icon.emoji ? 
+                    <link rel="icon" href={`data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${page.icon.emoji}</text></svg>`}></link>
+                    :
+                    <>
+                        <link rel='icon' type='image/png' sizes='32x32' href='/icons/favicon-32x32.png' />
+                        <link rel='icon' type='image/png' sizes='16x16' href='/icons/favicon-16x16.png' />
+                    </>
+                }
             </Head>
             <header className={styles.header}>
 
