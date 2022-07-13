@@ -7,6 +7,8 @@ import { FiArrowLeft } from "react-icons/fi";
 import Url from 'url-parse'
 
 export default function Post({ page, blocks }) {
+
+  console.log(page);
   if(!page)return(<div/>)
   const date = new Date(page.properties.Date.date.start).toLocaleString(
     "en-US",
@@ -15,10 +17,7 @@ export default function Post({ page, blocks }) {
       year: "numeric",
     }
   );
-  if (!!page.properties.Documentation.url){
-    const website = new Url(page.properties.Documentation.url);
-    page.properties.Documentation.hostname = website.host;
-  }
+
   return (
     <Layout page={page}>
       {page.cover &&
@@ -36,36 +35,12 @@ export default function Post({ page, blocks }) {
       {page.page_title &&
         <h2 className={styles.title}>
           {page.icon && page.icon.emoji} <RenderText text={page.page_title} />
-          {page.properties.Category.select &&
-        <span className={styles.category}>
-          {page.properties.Category.select.name}
-        </span>
-      }
         </h2>
         }
 
-        {page.properties.Documentation.url &&
-          <div className={styles.documentation}>
-            <Link href={`${page.properties.Documentation.url}`}>
-            {page.properties.Documentation.hostname}
-            </Link>
-          </div>
-        }
       {date && 
         <div className={styles.date}>
           {date}
-          {page.properties.Status.select &&
-           <span className={styles.status}>
-            {page.properties.Status.select.name}
-          </span>  
-          }
-        </div>
-        }
-      {page.properties.Tags.multi_select &&
-        <div className={styles.tags}>
-          {page.properties.Tags.multi_select.map((tag,i) => (
-            <span key={i}>{tag.name}</span>
-          ))}
         </div>
         }
         
@@ -77,7 +52,7 @@ export default function Post({ page, blocks }) {
 }
 
 export const getStaticPaths = async () => {
-  let database = JSON.parse(process.env.DATABASES).filter((database) => (database.name === "Works"))[0];
+  let database = JSON.parse(process.env.DATABASES).filter((database) => (database.name === "foodtrack"))[0];
   database = await getDatabase(database.id, database.filter, database.sort);
 
   return {
