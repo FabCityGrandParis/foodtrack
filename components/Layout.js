@@ -48,8 +48,8 @@ export default function Layout({ page, children }) {
                     {/* <meta property='og:image' content='https://essenlive.xyz/icons/apple-icon.png' /> */}
 
 
-                <title>essenlive | {page.page_title[0].plain_text}</title>
-                {page.icon.emoji ? 
+                {page?.page_title && <title>Foodtrack | {page.page_title[0].plain_text}</title>}
+                {page?.icon.emoji ? 
                     <link rel="icon" href={`data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${page.icon.emoji}</text></svg>`}></link>
                     :
                     <>
@@ -90,9 +90,9 @@ export default function Layout({ page, children }) {
                     <ThemeSwitch/>
             </header>
             {children}
-            <footer className={styles.footer}>
+            {/* <footer className={styles.footer}>
                 built with <Link href={`https://notion.so`}>notion.so</Link> and <Link href={`https://nextjs.org/`}>next.js</Link> | <Link href={`https://github.com/essenlive/essenlive.xyz`}>github</Link>
-            </footer>
+            </footer> */}
         </main>
     );
 }
